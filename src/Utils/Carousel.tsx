@@ -72,7 +72,7 @@ const Carousel = () => {
         <p className="text-white text-6xl pl-4 mb-4">Why choose us</p>
 
         {isMobile ? (
-          <div className="overflow-y-scroll h-[900px]">
+          <div className="overflow-y-scroll overflow-x-hidden h-[900px]">
             {sampleData.map((item, index) => (
               <div key={index} className="p-4">
                 <div className="bg-[#242424] rounded-lg py-2 px-4 h-[300px] relative group hover:bg-[#D7FB00] hover:text-black transition-all duration-300">
