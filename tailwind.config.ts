@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        gothic: ["GothicFont", "serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {
         background: "var(--background)",

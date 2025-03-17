@@ -5,13 +5,14 @@ import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Image from "next/image";
 import Button from "@/Components/Button";
 import Navbar from "@/Components/Navbar";
+import SearchModal from "@/Components/SearchModal";
 
 export default function HeroSection() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <div className="relative w-full min-h-screen flex flex-col ">
-
       <Image
         src="/gym-bg.jpg"
         alt="Gym Background"
@@ -22,12 +23,13 @@ export default function HeroSection() {
         className="absolute inset-0 -z-0"
       />
 
-
       <div className="absolute inset-0 bg-black bg-opacity-80 -z-1"></div>
 
-
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-
+      <Navbar
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        setIsSearchOpen={setIsSearchOpen}
+      />
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center flex-grow px-6">
         <h2 className="text-white text-4xl md:text-6xl lg:text-8xl font-bold uppercase max-w-[90%] md:max-w-3xl">
@@ -49,7 +51,6 @@ export default function HeroSection() {
           />
         </div>
 
-
         <div className="mt-12 md:mr-12 flex space-x-8">
           <button className="w-12 h-12 flex items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all">
             <FiChevronLeft size={24} />
@@ -59,6 +60,11 @@ export default function HeroSection() {
           </button>
         </div>
       </div>
+
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </div>
   );
 }
