@@ -36,7 +36,7 @@ export const sampleData: ISampleData[] = [
     description: "Push your limits with long-duration, high-intensity endurance training.",
   },
   {
-    src: "/tool1.png",
+    src: "/item1.png",
     name: "Core Strength",
     description: "Target your abs, obliques, and lower back for a rock-solid core.",
   },

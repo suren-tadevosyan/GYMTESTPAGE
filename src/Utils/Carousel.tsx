@@ -69,7 +69,7 @@ const Carousel = () => {
   return (
     <section className="w-full py-10 bg-black text-black">
       <div className="max-w-6xl mx-auto relative">
-        <p className="text-white text-6xl pl-4 mb-4">Why choose us</p>
+        <p className="text-white text-4xl font-bold md:text-5xl pl-4 mb-4">Why choose us</p>
 
         {isMobile ? (
           <div className="overflow-y-scroll overflow-x-hidden h-[900px]">
