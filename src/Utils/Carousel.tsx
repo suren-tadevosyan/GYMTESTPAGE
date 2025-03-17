@@ -27,32 +27,24 @@ function useMediaQuery(query: string) {
 const Carousel = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-
   const [emblaRef, embla] = useEmblaCarousel({
     align: "start",
-
     loop: false,
     axis: isMobile ? "y" : "x",
-
     dragFree: true,
-
     containScroll: "trimSnaps",
   });
-
 
   const totalSlides = sampleData.length;
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     if (!embla) return;
-
     const onSelect = () => {
-
       setSelectedIndex(embla.selectedScrollSnap());
     };
-
     embla.on("select", onSelect);
-    onSelect(); 
+    onSelect();
   }, [embla]);
 
   const scrollPrev = useCallback(() => {
@@ -65,9 +57,7 @@ const Carousel = () => {
 
   const scrollTo = useCallback(
     (index: number) => {
-      if (embla) {
-        embla.scrollTo(index);
-      }
+      embla && embla.scrollTo(index);
     },
     [embla]
   );
@@ -77,21 +67,23 @@ const Carousel = () => {
       <div className="max-w-6xl mx-auto relative">
         <p className="text-white text-6xl pl-4 mb-4">Why choose us</p>
 
-   
         <div
           className={`overflow-hidden ${isMobile ? "h-[1000px]" : ""}`}
           ref={emblaRef}
         >
-
           <div className={`flex ${isMobile ? "flex-col" : ""}`}>
             {sampleData.map((item, index) => (
               <div
                 key={index}
-
                 className={`flex-none p-4 ${isMobile ? "w-full" : "w-1/3"}`}
               >
                 <div className="bg-[#242424] rounded-lg py-2 px-4 h-[300px] relative group hover:bg-[#D7FB00] hover:text-black transition-all duration-300">
-                  <Image src={item.src} alt={item.name} width={100} height={30} />
+                  <Image
+                    src={item.src}
+                    alt={item.name}
+                    width={100}
+                    height={30}
+                  />
                   <div className="ml-4">
                     <h3 className="text-xl text-white font-bold group-hover:text-black">
                       {item.name}
@@ -116,18 +108,17 @@ const Carousel = () => {
           </div>
         </div>
 
-
         {!isMobile && (
           <>
             <button
               onClick={scrollPrev}
-              className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-md hover:bg-gray-200 border-2 border-white"
+              className="absolute left-[-50px] top-1/2 -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-md hover:bg-gray-200 border-2 border-white"
             >
               <FiChevronLeft size={24} />
             </button>
             <button
               onClick={scrollNext}
-              className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-md hover:bg-gray-200 border-2 border-white"
+              className="absolute right-[-50px] top-1/2 -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-md hover:bg-gray-200 border-2 border-white"
             >
               <FiChevronRight size={24} />
             </button>
@@ -135,18 +126,19 @@ const Carousel = () => {
         )}
       </div>
 
-
-      <div className="flex justify-center mt-4 space-x-2">
-        {Array.from({ length: totalSlides }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => scrollTo(i)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none ${
-              i === selectedIndex ? "bg-white scale-110" : "bg-gray-600"
-            }`}
-          ></button>
-        ))}
-      </div>
+      {!isMobile && (
+        <div className="flex justify-center mt-4 space-x-2">
+          {Array.from({ length: totalSlides }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none ${
+                i === selectedIndex ? "bg-white scale-110" : "bg-gray-600"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
