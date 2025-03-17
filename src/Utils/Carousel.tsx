@@ -48,16 +48,19 @@ const Carousel = () => {
   }, [embla]);
 
   const scrollPrev = useCallback(() => {
-    embla && embla.scrollPrev();
+    if (!embla) return;
+    embla.scrollPrev();
   }, [embla]);
 
   const scrollNext = useCallback(() => {
-    embla && embla.scrollNext();
+    if (!embla) return;
+    embla.scrollNext();
   }, [embla]);
 
   const scrollTo = useCallback(
     (index: number) => {
-      embla && embla.scrollTo(index);
+      if (!embla) return;
+      embla.scrollTo(index);
     },
     [embla]
   );
