@@ -50,7 +50,7 @@ export default function HeroSection() {
         </div>
 
 
-        <div className="mt-6 flex space-x-4">
+        <div className="mt-12 md:mr-12 flex space-x-8">
           <button className="w-12 h-12 flex items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all">
             <FiChevronLeft size={24} />
           </button>
