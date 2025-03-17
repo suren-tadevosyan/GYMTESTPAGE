@@ -3,13 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { sampleData } from "@/Constants/MockData";
-import {
-  FiArrowUpRight,
-  FiChevronLeft,
-  FiChevronRight,
-  FiChevronUp,
-  FiChevronDown,
-} from "react-icons/fi";
+import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { BsLightningCharge } from "react-icons/bs";
 import Button from "../Components/Button";
 import Image from "next/image";
@@ -34,7 +28,6 @@ const Carousel = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const slidesPerGroup = 3;
-
 
   const [emblaRef, embla] = useEmblaCarousel({
     loop: true,
@@ -73,17 +66,13 @@ const Carousel = () => {
     [embla]
   );
 
-
   return (
     <section className="w-full py-10 bg-black text-black">
       <div className="max-w-6xl mx-auto relative">
         <p className="text-white text-6xl pl-4 mb-4">Why choose us</p>
 
-       
         {isMobile ? (
-          <div
-            className="overflow-y-scroll h-[900px]" 
-          >
+          <div className="overflow-y-scroll h-[900px]">
             {sampleData.map((item, index) => (
               <div key={index} className="p-4">
                 <div className="bg-[#242424] rounded-lg py-2 px-4 h-[300px] relative group hover:bg-[#D7FB00] hover:text-black transition-all duration-300">
@@ -116,8 +105,7 @@ const Carousel = () => {
             ))}
           </div>
         ) : (
-
-   /////////////////////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////////////////////
           <>
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
@@ -154,7 +142,6 @@ const Carousel = () => {
               </div>
             </div>
 
-  
             <button
               onClick={scrollPrev}
               className="absolute left-[-50px] mt-8 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-md hover:bg-gray-200 border-2 border-white"
@@ -167,7 +154,6 @@ const Carousel = () => {
             >
               <FiChevronRight size={24} />
             </button>
-
 
             <div className="flex justify-center mt-4 space-x-2">
               {Array.from({ length: totalSlides }).map((_, i) => (
